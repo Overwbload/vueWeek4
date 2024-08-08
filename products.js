@@ -136,6 +136,7 @@ const app = createApp({
             });
       }
 
+      // 原forEach方法 改用find方法
       // this.products.forEach((item) => {
       //   if (item.id === this.tempProduct.id) {
       //     axios.delete(`${this.url}/api/${this.path}/admin/product/${this.tempProduct.id}`)
@@ -182,7 +183,7 @@ const app = createApp({
           console.log(res);
         })
         .catch(err => {
-          console.log(err.res.response);
+          console.dir(err.res.response);
         })
     }
   },
@@ -191,8 +192,8 @@ const app = createApp({
     const token = document.cookie.replace(/(?:(?:^|.*;\s*)jasonToken\s*\=\s*([^;]*).*$)|^.*$/, "$1",);
     axios.defaults.headers.common['Authorization'] = token;
     this.checkLoginToken();  //call登入驗證
+    // console.log(this.$refs.productModalComponent.$refs); 
 
-    console.log(this.$refs.productModalComponent.$refs); 
     //原week3用法 week4改用了refs的方式
     // proModal = new bootstrap.Modal(document.querySelector('#productModal'));  //取得productModal的DOM元素
     // delModal = new bootstrap.Modal(document.querySelector('#delProductModal')); //取得delProductModal的DOM元素  
